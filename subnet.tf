@@ -10,6 +10,19 @@ resource "aws_subnet" "Public_1" {       #Creating the public_subnet#
   }
 }
 
+
+resource "aws_subnet" "Private_1" {       #Creating the private_subnet#
+  vpc_id     = aws_vpc.main.id
+  cidr_block = "192.168.11.0/24"
+  map_public_ip_on_launch = false
+  availability_zone = "eu-central-1a"
+
+  tags = {
+    Name = "Private_1"
+  }
+}
+
+
 resource "aws_subnet" "Public_2" {       #Creating the public_subnet#
   vpc_id     = aws_vpc.main.id
   cidr_block = "192.168.2.0/24"
@@ -19,6 +32,18 @@ resource "aws_subnet" "Public_2" {       #Creating the public_subnet#
     Name = "Public_2"
   }
 }
+
+resource "aws_subnet" "Private_2" {       #Creating the private_subnet#
+  vpc_id     = aws_vpc.main.id
+  cidr_block = "192.168.12.0/24"
+  map_public_ip_on_launch = false
+  availability_zone = "eu-central-1b"
+  tags = {
+    Name = "Private_2"
+  }
+}
+
+
 
 resource "aws_subnet" "Public_3" {       #Creating the public_subnet#
   vpc_id     = aws_vpc.main.id
@@ -30,26 +55,9 @@ resource "aws_subnet" "Public_3" {       #Creating the public_subnet#
   }
 }
 
-resource "aws_subnet" "Private_1" {       #Creating the public_subnet#
-  vpc_id     = aws_vpc.main.id
-  cidr_block = "192.168.11.0/24"
-  map_public_ip_on_launch = false
-  availability_zone = "eu-central-1a"
 
-  tags = {
-    Name = "Private_1"
-  }
-}
 
-resource "aws_subnet" "Private_2" {       #Creating the public_subnet#
-  vpc_id     = aws_vpc.main.id
-  cidr_block = "192.168.12.0/24"
-  map_public_ip_on_launch = false
-  availability_zone = "eu-central-1b"
-  tags = {
-    Name = "Private_2"
-  }
-}
+
 
 resource "aws_subnet" "Private_3" {       #Creating the public_subnet#
   vpc_id     = aws_vpc.main.id
